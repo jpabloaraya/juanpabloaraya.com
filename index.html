@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Juan Pablo Araya</title>
+<meta name="description" content="Juan Pablo Araya Orellana — Profesor Asistente, Universidad Diego Portales. Ph.D. in Public Administration and Policy, University of Georgia. Burocracias públicas, servicio civil, política ejecutiva.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#FCFCFA;
+    --paper-2:#F3F3EF;
+    --ink:#17181C;
+    --ink-2:#4F5259;
+    --ink-3:#7C7F87;
+    --rule:#DFDFD9;
+    --accent:#1F3E78;
+    --accent-ink:#FFFFFF;
+    --accent-soft:#E8EDF7;
+    --logo-light:inline-block;
+    --logo-dark:none;
+    --serif:"Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --sans:"IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --gutter:clamp(16px, 4vw, 40px);
+    --measure:64ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#121317; --paper-2:#1A1B20; --ink:#ECEBE6; --ink-2:#B6B8BE; --ink-3:#83868E;
+      --rule:#2A2C33; --accent:#9DB4E4; --accent-ink:#0F1524; --accent-soft:#1D2740;
+      --logo-light:none; --logo-dark:inline-block;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#121317; --paper-2:#1A1B20; --ink:#ECEBE6; --ink-2:#B6B8BE; --ink-3:#83868E;
+    --rule:#2A2C33; --accent:#9DB4E4; --accent-ink:#0F1524; --accent-soft:#1D2740;
+    --logo-light:none; --logo-dark:inline-block;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); font-size:18px; line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  a{color:var(--accent); text-decoration:none; text-underline-offset:3px; text-decoration-thickness:1px}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px}
+  p{margin:0}
+  h1,h2,h3{margin:0; font-weight:400; text-wrap:balance}
+  img{max-width:100%}
+
+  /* language switching */
+  #site[data-lang="es"] [lang="en"]{display:none !important}
+  #site[data-lang="en"] [lang="es"]{display:none !important}
+
+  .wrap{max-width:1080px; margin:0 auto; padding-inline:var(--gutter)}
+
+  /* ---------- top bar ---------- */
+  .top{
+    position:sticky; top:env(safe-area-inset-top, 0px); z-index:10;
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  .top .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:56px}
+  .brand{font-family:var(--serif); font-size:19px; font-weight:500; letter-spacing:.01em; color:var(--ink); white-space:nowrap}
+  .nav{display:flex; align-items:center; gap:18px; min-width:0}
+  .links{display:flex; gap:20px; font-family:var(--sans); font-size:13.5px; font-weight:500; letter-spacing:.02em; overflow-x:auto; white-space:nowrap; scrollbar-width:none; padding-block:6px}
+  .links::-webkit-scrollbar{display:none}
+  .links a{color:var(--ink-2)}
+  .links a:hover{color:var(--ink); text-decoration:none}
+  .lang{
+    display:inline-flex; flex:none; border:1px solid var(--rule); border-radius:999px; overflow:hidden;
+    font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.06em;
+  }
+  .lang button{ all:unset; cursor:pointer; padding:5px 10px; color:var(--ink-3); line-height:1; }
+  .lang button[aria-pressed="true"]{background:var(--ink); color:var(--paper)}
+  .lang button:focus-visible{outline:2px solid var(--accent); outline-offset:-2px}
+  @media (max-width:760px){
+    .top .wrap{flex-wrap:wrap; padding-block:8px}
+    .brand{order:1} .lang{order:2} .nav{order:3; width:100%}
+    .links{width:100%; gap:16px; padding-block:2px 6px}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding-block:clamp(40px, 8vw, 84px) clamp(32px, 6vw, 60px); border-bottom:1px solid var(--rule)}
+  .hero .wrap{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:clamp(24px, 5vw, 64px); align-items:start}
+  .kicker{font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:18px}
+  .hero h1{font-size:clamp(40px, 6.2vw, 68px); line-height:1.02; font-weight:400; letter-spacing:-.015em; font-variation-settings:"opsz" 72}
+  .hero h1 .last{font-weight:300; color:var(--ink-2)}
+  .role{margin-top:22px; font-size:clamp(19px, 2.2vw, 22px); line-height:1.45; max-width:var(--measure); color:var(--ink-2); font-style:italic}
+  .role b{font-style:normal; font-weight:500; color:var(--ink)}
+  .lede{margin-top:16px; max-width:var(--measure); font-size:18px; color:var(--ink-2)}
+  .affil{display:flex; align-items:center; gap:18px; margin-top:26px; padding-top:22px; border-top:1px solid var(--rule); max-width:var(--measure)}
+  .affil img{height:38px; width:auto; display:none}
+  .affil img.light{display:var(--logo-light)}
+  .affil img.dark{display:var(--logo-dark)}
+  .affil .txt{font-family:var(--sans); font-size:12.5px; line-height:1.45; color:var(--ink-3); letter-spacing:.01em}
+  .affil .txt a{color:var(--ink-2)}
+  .hero-links{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:22px; font-family:var(--sans); font-size:13.5px; font-weight:500}
+  .hero-links a{display:inline-flex; align-items:center; gap:6px; color:var(--ink)}
+  .hero-links a::after{content:"↗"; color:var(--ink-3); font-size:12px}
+  .portrait{
+    width:clamp(150px, 22vw, 240px); aspect-ratio:1; max-width:100%; overflow:hidden; margin:0;
+    border-radius:6px; background:var(--paper-2); border:1px solid var(--rule);
+  }
+  .portrait img{width:100%; height:100%; object-fit:cover; display:block}
+  @media (max-width:640px){
+    .hero .wrap{grid-template-columns:1fr}
+    .portrait{order:-1; width:128px}
+  }
+
+  /* ---------- sections ---------- */
+  section.block{border-bottom:1px solid var(--rule); padding-block:clamp(36px, 6vw, 64px)}
+  section.block .wrap{display:grid; grid-template-columns:200px minmax(0,1fr); gap:clamp(20px, 4vw, 56px)}
+  .label{position:sticky; top:calc(56px + env(safe-area-inset-top, 0px) + 24px); align-self:start}
+  .label h2{font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--ink)}
+  .label .sub{font-family:var(--sans); font-size:12.5px; color:var(--ink-3); margin-top:6px; line-height:1.4}
+  .body{max-width:var(--measure)}
+  .body.wide{max-width:none}
+  .prose{display:grid; gap:1.1em}
+  .prose p{color:var(--ink)}
+  .prose em{font-style:italic}
+  @media (max-width:760px){
+    section.block .wrap{grid-template-columns:1fr; gap:16px}
+    .label{position:static}
+  }
+
+  /* interests */
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:26px}
+  .tags span{
+    font-family:var(--sans); font-size:13px; font-weight:500; color:var(--ink-2);
+    border:1px solid var(--rule); border-radius:999px; padding:6px 12px; line-height:1
+  }
+
+  /* group headings (publications, teaching, talks) */
+  .group + .group{margin-top:40px}
+  .group h3{font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); padding-bottom:10px; border-bottom:1px solid var(--rule)}
+  .group h3 small{font-weight:400; letter-spacing:.02em; text-transform:none; margin-left:8px}
+
+  /* publications */
+  .pubs{list-style:none; margin:0; padding:0}
+  .pub{
+    display:grid; grid-template-columns:64px minmax(0,1fr); gap:0 18px;
+    padding-block:16px; border-bottom:1px solid var(--rule); max-width:78ch;
+  }
+  .pub .year{font-family:var(--sans); font-size:13.5px; font-weight:500; color:var(--ink-3); font-variant-numeric:tabular-nums; padding-top:4px}
+  .pub .title{font-size:19px; line-height:1.35; color:var(--ink)}
+  .pub .title a{color:var(--ink)}
+  .pub .title a:hover{color:var(--accent)}
+  .pub .meta{margin-top:5px; color:var(--ink-2); font-size:16.5px; line-height:1.45}
+  .pub .meta .self{font-weight:500; color:var(--ink)}
+  .pub .meta i{font-style:italic}
+  .pub .doi{margin-top:6px; font-family:var(--sans); font-size:12.5px; letter-spacing:.01em}
+  .pub .doi a{color:var(--accent)}
+  .pub .status{display:inline-block; font-family:var(--sans); font-size:11.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); border:1px solid var(--rule); border-radius:4px; padding:2px 7px; margin-top:8px}
+  @media (max-width:480px){
+    .pub{grid-template-columns:1fr; gap:4px}
+    .pub .year{padding-top:0}
+  }
+
+  /* rows (teaching, research, management) */
+  .rows{display:grid; max-width:80ch}
+  .row{display:grid; grid-template-columns:minmax(150px, 220px) minmax(0,1fr); gap:6px 18px; padding-block:16px; border-bottom:1px solid var(--rule)}
+  .row .inst{font-family:var(--sans); font-size:13.5px; font-weight:600; color:var(--ink); line-height:1.4; padding-top:3px}
+  .row .inst small{display:block; font-weight:400; color:var(--ink-3); margin-top:3px; letter-spacing:.01em; font-variant-numeric:tabular-nums}
+  .row .what{color:var(--ink-2); font-size:17px}
+  .row .what b{font-weight:500; color:var(--ink)}
+  .row .what .award{display:inline-block; font-family:var(--sans); font-size:12px; font-weight:600; color:var(--accent); background:var(--accent-soft); border-radius:4px; padding:3px 8px; margin-top:8px}
+  .courses{margin:8px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:6px}
+  .courses li{font-family:var(--sans); font-size:13px; color:var(--ink-2); border:1px solid var(--rule); border-radius:4px; padding:4px 9px; line-height:1.3}
+  .courses li small{color:var(--ink-3)}
+  .proj{margin-top:4px; color:var(--ink-2); font-size:16.5px}
+  .proj i{font-style:italic; color:var(--ink)}
+  @media (max-width:520px){ .row{grid-template-columns:1fr} }
+
+  /* talks */
+  .talks{list-style:none; margin:0; padding:0; max-width:80ch}
+  .talk{display:grid; grid-template-columns:64px minmax(0,1fr); gap:0 18px; padding-block:12px; border-bottom:1px solid var(--rule)}
+  .talk .year{font-family:var(--sans); font-size:13.5px; font-weight:500; color:var(--ink-3); font-variant-numeric:tabular-nums; padding-top:3px}
+  .talk .t{font-size:17.5px; line-height:1.4; color:var(--ink)}
+  .talk .v{font-family:var(--sans); font-size:13px; color:var(--ink-3); margin-top:3px}
+  @media (max-width:480px){ .talk{grid-template-columns:1fr; gap:2px} }
+
+  /* cv + contact */
+  .cta{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:26px}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; font-family:var(--sans); font-size:13.5px; font-weight:600;
+    padding:11px 16px; border-radius:6px; border:1px solid var(--ink); color:var(--ink); background:transparent; line-height:1;
+  }
+  .btn.primary{background:var(--ink); color:var(--paper)}
+  .btn:hover{text-decoration:none; background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+  .contact{list-style:none; margin:0; padding:0; display:grid; max-width:64ch}
+  .contact li{display:grid; grid-template-columns:120px minmax(0,1fr); gap:12px; padding-block:12px; border-bottom:1px solid var(--rule); font-size:16.5px}
+  .contact .k{font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); padding-top:4px}
+  .contact li a{overflow-wrap:anywhere}
+  .contact .addr{color:var(--ink-2)}
+  @media (max-width:420px){ .contact li{grid-template-columns:1fr; gap:4px} }
+  .honors{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:10px; max-width:64ch}
+  .honors li{padding-left:18px; position:relative; color:var(--ink-2); font-size:16.5px; line-height:1.45}
+  .honors li::before{content:""; position:absolute; left:0; top:.62em; width:8px; height:1px; background:var(--ink-3)}
+  .honors li b{font-weight:500; color:var(--ink)}
+  .memb{font-family:var(--sans); font-size:13.5px; color:var(--ink-2); margin-top:26px; line-height:1.6}
+  .memb b{font-weight:600; color:var(--ink-3); letter-spacing:.06em; text-transform:uppercase; font-size:11.5px; display:block; margin-bottom:4px}
+
+  /* footer */
+  footer{padding-block:32px 40px; font-family:var(--sans); font-size:12.5px; color:var(--ink-3)}
+  footer .wrap{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px 24px}
+  footer a{color:var(--ink-3); text-decoration:underline; text-decoration-color:var(--rule)}
+  footer img{height:26px; width:auto; display:none; opacity:.85}
+  footer img.light{display:var(--logo-light)}
+  footer img.dark{display:var(--logo-dark)}
+</style>
+</head>
+<body>
+<div id="site" data-lang="es">
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Juan Pablo Araya</a>
+    <span class="lang" role="group" aria-label="Idioma / Language">
+      <button type="button" id="lang-es" data-set="es" aria-pressed="true">ES</button>
+      <button type="button" id="lang-en" data-set="en" aria-pressed="false">EN</button>
+    </span>
+    <nav class="nav" aria-label="Secciones">
+      <span class="links">
+        <a href="#bio"><span lang="es">Bio</span><span lang="en">About</span></a>
+        <a href="#publicaciones"><span lang="es">Publicaciones</span><span lang="en">Publications</span></a>
+        <a href="#docencia"><span lang="es">Docencia</span><span lang="en">Teaching</span></a>
+        <a href="#investigacion"><span lang="es">Investigación</span><span lang="en">Research</span></a>
+        <a href="#ponencias"><span lang="es">Ponencias</span><span lang="en">Talks</span></a>
+        <a href="#cv"><span lang="es">CV y contacto</span><span lang="en">CV &amp; contact</span></a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="kicker">
+          <span lang="es">Administración y políticas públicas</span>
+          <span lang="en">Public administration &amp; policy</span>
+        </p>
+        <h1>Juan Pablo <span class="last">Araya Orellana</span></h1>
+        <p class="role">
+          <span lang="es"><b>Profesor Asistente</b>, Departamento de Administración, Facultad de Administración y Economía, Universidad Diego Portales. Ph.D. en Public Administration and Policy, University of Georgia.</span>
+          <span lang="en"><b>Assistant Professor</b>, Department of Administration, Faculty of Administration and Economics, Universidad Diego Portales. Ph.D. in Public Administration and Policy, University of Georgia.</span>
+        </p>
+        <p class="lede">
+          <span lang="es">Estudio la autonomía y la influencia de las burocracias públicas, las reformas al servicio civil, la política ejecutiva y el liderazgo público, con énfasis en Chile y América Latina.</span>
+          <span lang="en">I study the autonomy and influence of public bureaucracies, civil service reform, executive politics and public leadership, with a focus on Chile and Latin America.</span>
+        </p>
+        <div class="affil">
+          <a href="https://www.udp.cl" target="_blank" rel="noopener" aria-label="Universidad Diego Portales">
+            <img class="light" src="udp-logo.png" alt="Universidad Diego Portales">
+            <img class="dark" src="udp-logo-dark.png" alt="">
+          </a>
+          <p class="txt">
+            <span lang="es">Escuela de Administración Pública · <a href="https://www.udp.cl" target="_blank" rel="noopener">Facultad de Administración y Economía</a><br>Santiago de Chile</span>
+            <span lang="en">School of Public Administration · <a href="https://www.udp.cl" target="_blank" rel="noopener">Faculty of Administration and Economics</a><br>Santiago, Chile</span>
+          </p>
+        </div>
+        <div class="hero-links">
+          <a href="https://scholar.google.com/citations?user=eDBbeDcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="mailto:juanpablo.araya@udp.cl">juanpablo.araya@udp.cl</a>
+          <a href="#cv"><span lang="es">Descargar CV</span><span lang="en">Download CV</span></a>
+        </div>
+      </div>
+      <figure class="portrait">
+        <img src="photo.jpg" alt="Juan Pablo Araya Orellana">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= BIO ================= -->
+  <section class="block" id="bio">
+    <div class="wrap">
+      <div class="label">
+        <h2><span lang="es">Bio</span><span lang="en">About</span></h2>
+        <p class="sub"><span lang="es">Trayectoria, formación e intereses</span><span lang="en">Background, education and interests</span></p>
+      </div>
+      <div class="body">
+        <div class="prose" lang="es">
+          <p>Soy Profesor Asistente del Departamento de Administración de la Facultad de Administración y Economía de la <a href="https://www.udp.cl" target="_blank" rel="noopener">Universidad Diego Portales</a>, en Santiago de Chile, donde enseño en la Escuela de Administración Pública. Obtuve el Ph.D. en Public Administration and Policy en la <a href="https://spia.uga.edu" target="_blank" rel="noopener">School of Public and International Affairs</a> de la University of Georgia (2026), con especialización en políticas públicas. Mi tesis doctoral, <em>Bureaucratic Autonomy in Comparative Perspective</em>, fue dirigida por Gene A. Brewer, con Andrew B. Whitford y L. Jason Anastasopoulos como miembros del comité.</p>
+          <p>Mi investigación se centra en las burocracias públicas y su autonomía, las reformas al servicio civil, la política ejecutiva, el liderazgo público y la administración y políticas públicas comparadas. Mi trabajo ha sido publicado en <em>Public Administration Review</em>, <em>International Journal of Public Administration</em>, <em>Public Organization Review</em>, <em>Convergencia</em>, <em>Historia 396</em> y <em>Revista de Gestión Pública</em>, entre otras revistas, y en capítulos de libro y entradas de la <em>Global Encyclopedia of Public Administration, Public Policy, and Governance</em> (Springer).</p>
+          <p>Antes de incorporarme a la UDP fui asesor legislativo jefe en el Congreso de la República de Colombia (2018–2021), coordinador académico del pregrado en Administración Pública de la <a href="https://gobierno.uchile.cl" target="_blank" rel="noopener">Universidad de Chile</a> (2010–2018) y de la <a href="https://www.uoh.cl/escuela-de-ciencias-sociales/" target="_blank" rel="noopener">Universidad de O'Higgins</a> (2020–2023), y asistente de investigación en la University of Georgia. He dictado cursos de pregrado y posgrado en la Universidad de Chile, la Universidad de Santiago de Chile, la Universidad de O'Higgins, la Universidad Autónoma de Chile, la Universidad de Los Lagos y la Universidad Católica de Temuco.</p>
+          <p>Soy Magíster en Ciencia Política (distinción máxima) y Administrador Público (distinción máxima) por la Universidad de Chile, donde también obtuve la Licenciatura en Ciencia Política y Gobierno con mención en Gestión Pública. Fui becario Fulbright para estudios doctorales en Estados Unidos y recibí la Zell Miller Scholarship for Public Leadership y la Thomas P. and M. Jean Lauth Graduate Fellowship de la University of Georgia. En 2025 recibí el premio al Mejor Docente en Administración Pública de la Facultad de Administración y Economía de la UDP.</p>
+          <p>He sido entrevistado y citado por medios como La Nación y Clarín (Argentina), La Razón (España), Forbes y Huffington Post (en español), El Mercurio, Radio Biobío y Chilevisión (Chile) sobre política, políticas públicas y administración pública.</p>
+        </div>
+        <div class="prose" lang="en">
+          <p>I am an Assistant Professor in the Department of Administration at the Faculty of Administration and Economics, <a href="https://www.udp.cl" target="_blank" rel="noopener">Universidad Diego Portales</a>, in Santiago, Chile, where I teach in the School of Public Administration. I earned a Ph.D. in Public Administration and Policy from the <a href="https://spia.uga.edu" target="_blank" rel="noopener">School of Public and International Affairs</a> at the University of Georgia (2026), with a subfield specialization in public policy. My dissertation, <em>Bureaucratic Autonomy in Comparative Perspective</em>, was chaired by Gene A. Brewer, with Andrew B. Whitford and L. Jason Anastasopoulos as committee members.</p>
+          <p>My research focuses on public bureaucracies and their autonomy, civil service reform, executive politics, public leadership, and comparative public administration and policy. My work has appeared in <em>Public Administration Review</em>, <em>International Journal of Public Administration</em>, <em>Public Organization Review</em>, <em>Convergencia</em>, <em>Historia 396</em> and <em>Revista de Gestión Pública</em>, among other journals, as well as in book chapters and entries in the <em>Global Encyclopedia of Public Administration, Public Policy, and Governance</em> (Springer).</p>
+          <p>Before joining UDP, I was head legislative advisor in the Congress of the Republic of Colombia (2018–2021), academic coordinator of the undergraduate program in Public Administration at the <a href="https://gobierno.uchile.cl" target="_blank" rel="noopener">University of Chile</a> (2010–2018) and at <a href="https://www.uoh.cl/escuela-de-ciencias-sociales/" target="_blank" rel="noopener">O'Higgins State University</a> (2020–2023), and a research graduate assistant at the University of Georgia. I have taught undergraduate and graduate courses at the University of Chile, the University of Santiago de Chile, O'Higgins State University, Universidad Autónoma de Chile, University of Los Lagos and the Catholic University of Temuco.</p>
+          <p>I hold an M.A. in Political Science (highest distinction) and a professional degree in Public Administration (highest distinction) from the University of Chile, where I also earned a B.A. in Political Science and Government with a specialization in public management. I was a Fulbright scholar for doctoral studies in the United States and received the Zell Miller Scholarship for Public Leadership and the Thomas P. and M. Jean Lauth Graduate Fellowship at the University of Georgia. In 2025 I received the Best Instructor in Public Administration Award from UDP's Faculty of Administration and Economics.</p>
+          <p>I have been interviewed and quoted by media outlets such as La Nación and Clarín (Argentina), La Razón (Spain), Forbes and Huffington Post (in Spanish), El Mercurio, Radio Biobío and Chilevisión (Chile) on politics, public policy and public administration.</p>
+        </div>
+
+        <div class="tags" aria-label="Research interests">
+          <span><span lang="es">Burocracias públicas</span><span lang="en">Public bureaucracies</span></span>
+          <span><span lang="es">Autonomía burocrática</span><span lang="en">Bureaucratic autonomy</span></span>
+          <span><span lang="es">Reforma del servicio civil</span><span lang="en">Civil service reform</span></span>
+          <span><span lang="es">Política ejecutiva</span><span lang="en">Executive politics</span></span>
+          <span><span lang="es">Liderazgo público</span><span lang="en">Public leadership</span></span>
+          <span><span lang="es">Burocracia representativa</span><span lang="en">Representative bureaucracy</span></span>
+          <span><span lang="es">Administración pública comparada</span><span lang="en">Comparative public administration</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section class="block" id="publicaciones">
+    <div class="wrap">
+      <div class="label">
+        <h2><span lang="es">Publicaciones</span><span lang="en">Publications</span></h2>
+        <p class="sub"><span lang="es">Artículos, capítulos y trabajos en evaluación, más recientes primero</span><span lang="en">Articles, chapters and papers under review, newest first</span></p>
+      </div>
+      <div class="body wide">
+
+        <div class="group">
+          <h3><span lang="es">Artículos en revistas indexadas</span><span lang="en">Journal articles</span> <small>Web of Science</small></h3>
+          <ol class="pubs">
+            <li class="pub">
+              <span class="year">2026</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.1111/puar.70081" target="_blank" rel="noopener">Disciplinary Tensions and Institutional Diversity in the Study of Public Administration in Chile</a></p>
+                <p class="meta">Nicolás Didier <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <i>Public Administration Review</i>, 86(3), 836–851.</p>
+                <p class="doi"><a href="https://doi.org/10.1111/puar.70081" target="_blank" rel="noopener">doi:10.1111/puar.70081</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2024</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.22370/rgp.2024.13.2.4425" target="_blank" rel="noopener">Modernización y profesionalización del Estado: una aproximación desde la administración pública</a></p>
+                <p class="meta">Nicolás Didier <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <i>Revista de Gestión Pública</i>, 13(2), 111–141.</p>
+                <p class="doi"><a href="https://doi.org/10.22370/rgp.2024.13.2.4425" target="_blank" rel="noopener">doi:10.22370/rgp.2024.13.2.4425</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2022</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.1007/s11115-021-00522-8" target="_blank" rel="noopener">Assessment of the Leadership Styles in Public Organizations: An Analysis of Public Employees' Perception</a></p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span>. <i>Public Organization Review</i>, 22(1), 99–116.</p>
+                <p class="doi"><a href="https://doi.org/10.1007/s11115-021-00522-8" target="_blank" rel="noopener">doi:10.1007/s11115-021-00522-8</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2021</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.1080/01900692.2020.1773496" target="_blank" rel="noopener">Representative Bureaucracy: Exploring the Factors that Inhibit Active Representation in Indigenous Managers from a Latin American Case</a></p>
+                <p class="meta">Verónica Figueroa Huencho <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <i>International Journal of Public Administration</i>, 44(16), 1404–1414.</p>
+                <p class="doi"><a href="https://doi.org/10.1080/01900692.2020.1773496" target="_blank" rel="noopener">doi:10.1080/01900692.2020.1773496</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2019</span>
+              <div>
+                <p class="title">Trayectoria histórica de la tecnocracia en Chile (1850–1970)</p>
+                <p class="meta">Mauricio Olavarría, Cristina Moyano, <span class="self">Juan Pablo Araya</span> <span lang="es">y</span><span lang="en">and</span> Jorge Rivas. <i>Historia 396</i>, 9(1), 255–290.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2016</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.22370/rgp.2016.5.2.2222" target="_blank" rel="noopener">La burocracia como élite: el eslabón perdido en los estudios sobre élites gubernamentales en Chile</a></p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span>. <i>Revista de Gestión Pública</i>, 5(2), 253–282.</p>
+                <p class="doi"><a href="https://doi.org/10.22370/rgp.2016.5.2.2222" target="_blank" rel="noopener">doi:10.22370/rgp.2016.5.2.2222</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2014</span>
+              <div>
+                <p class="title"><a href="https://convergencia.uaemex.mx/article/view/994" target="_blank" rel="noopener">Desafío a la formación de los futuros directivos públicos del siglo XXI</a></p>
+                <p class="meta">Verónica Figueroa Huencho, Cristián Pliscoff <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <i>Convergencia. Revista de Ciencias Sociales</i>, 21(64), 207–234.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="group">
+          <h3><span lang="es">Otros artículos arbitrados</span><span lang="en">Other peer-reviewed articles</span></h3>
+          <ol class="pubs">
+            <li class="pub">
+              <span class="year">2023</span>
+              <div>
+                <p class="title"><a href="https://portalrevistas.ucb.br/index.php/clabes/article/view/16656/12708" target="_blank" rel="noopener">La resolución de problemas en matemática como forma de abordar el abandono de estudios en Administración Pública</a></p>
+                <p class="meta">Francisco Matus <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <i>Revista CLABES</i>.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2016</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.5354/0719-5338.2016.44920" target="_blank" rel="noopener">Influencia burocrática en el proceso de política pública en Chile: el caso del surgimiento e implementación del Sistema de Alta Dirección Pública</a></p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span>. <i>Política. Revista de Ciencia Política</i>, 54(2), 277–298.</p>
+                <p class="doi"><a href="https://doi.org/10.5354/0719-5338.2016.44920" target="_blank" rel="noopener">doi:10.5354/0719-5338.2016.44920</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2016</span>
+              <div>
+                <p class="title"><a href="http://revistas.javeriana.edu.co/index.php/univhumanistica/article/view/13105" target="_blank" rel="noopener">Reflexiones críticas sobre las alianzas público-privadas como instrumentos de respuesta frente a catástrofes naturales</a></p>
+                <p class="meta">Paulina Vergara, <span class="self">Juan Pablo Araya</span>, Ximena Fuster <span lang="es">y</span><span lang="en">and</span> Sebastián Donoso. <i>Universitas Humanística</i>, 82(2), 219–248.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2012</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.5354/0717-6759.2012.21180" target="_blank" rel="noopener">Las alianzas público-privadas como gatilladoras de innovación en las organizaciones públicas: reflexiones a partir de la situación chilena</a></p>
+                <p class="meta">Cristián Pliscoff <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <i>Revista Estado, Gobierno y Gestión Pública</i>, (19), 173–198.</p>
+                <p class="doi"><a href="https://doi.org/10.5354/0717-6759.2012.21180" target="_blank" rel="noopener">doi:10.5354/0717-6759.2012.21180</a></p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="group">
+          <h3><span lang="es">Capítulos de libro y entradas de enciclopedia</span><span lang="en">Book chapters and encyclopedia entries</span></h3>
+          <ol class="pubs">
+            <li class="pub">
+              <span class="year">2022</span>
+              <div>
+                <p class="title">Tecnócratas en la vieja democracia chilena (1850–1970)</p>
+                <p class="meta">Mauricio Olavarría, Cristina Moyano, <span class="self">Juan Pablo Araya</span> <span lang="es">y</span><span lang="en">and</span> Jorge Rivas. <span lang="es">En</span><span lang="en">In</span> M. Olavarría (ed.), <i>Historia y políticas públicas</i> (pp. 135–176). Santiago: RIL Editores.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2020</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.1007/978-3-319-31816-5_4108-1" target="_blank" rel="noopener">Active Representation in Indigenous Public Managers: New Challenges to Representative Bureaucracy Theory</a></p>
+                <p class="meta">Verónica Figueroa Huencho <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <span lang="es">En</span><span lang="en">In</span> A. Farazmand (ed.), <i>Global Encyclopedia of Public Administration, Public Policy, and Governance</i>. Springer.</p>
+                <p class="doi"><a href="https://doi.org/10.1007/978-3-319-31816-5_4108-1" target="_blank" rel="noopener">doi:10.1007/978-3-319-31816-5_4108-1</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2019</span>
+              <div>
+                <p class="title">Aprendizaje y servicio en la Universidad de Chile: vinculando la docencia con las necesidades del país</p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span>, A. Bobadilla, M. Cleveland, P. Garrido, L. Pinto, A. Rodríguez, G. Valenzuela <span lang="es">y</span><span lang="en">and</span> P. Vergara. <span lang="es">En</span><span lang="en">In</span> V. Pizarro <span lang="es">y</span><span lang="en">and</span> B. Hasbún (eds.), <i>Aprendizaje y servicio en la educación superior chilena A+S</i> (pp. 141–156). Santiago: Ediciones CEA-FEN, Universidad de Chile.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2018</span>
+              <div>
+                <p class="title">Desafío y propuestas de política pública ante el riesgo: integrando a las comunidades</p>
+                <p class="meta">Paulina Vergara, Daniela Ejsmentewicz, <span class="self">Juan Pablo Araya</span> <span lang="es">y</span><span lang="en">and</span> Ximena Fuster. <span lang="es">En</span><span lang="en">In</span> G. Vargas, S. Pérez <span lang="es">y</span><span lang="en">and</span> P. Aldunce (eds.), <i>Aluviones y resiliencia de Atacama: aportes desde la transdisciplina académica</i> (pp. 381–411). Social-Ediciones, Facultad de Ciencias Sociales, Universidad de Chile.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2017</span>
+              <div>
+                <p class="title"><a href="https://doi.org/10.1007/978-3-319-31816-5_3176-1" target="_blank" rel="noopener">Bureaucratic Influence in Policy Formulation</a></p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span>. <span lang="es">En</span><span lang="en">In</span> A. Farazmand (ed.), <i>Global Encyclopedia of Public Administration, Public Policy, and Governance</i>. Springer.</p>
+                <p class="doi"><a href="https://doi.org/10.1007/978-3-319-31816-5_3176-1" target="_blank" rel="noopener">doi:10.1007/978-3-319-31816-5_3176-1</a></p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2015</span>
+              <div>
+                <p class="title">Experiencias de innovación pedagógica en la Escuela de Gobierno y Gestión Pública de la Universidad de Chile</p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span>, Cristián Pliscoff <span lang="es">y</span><span lang="en">and</span> Paulina Vergara. <span lang="es">En</span><span lang="en">In</span> C. Pliscoff (ed.), <i>Enseñanza y aprendizaje de administración y políticas públicas en las Américas</i> (pp. 61–78). Santiago: RIL Editores.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2014</span>
+              <div>
+                <p class="title"><a href="https://www.clear-la.org/p/la-evaluacion-de-politicas-publicas-en-america-latina-metodos-y-propuestas-docentes/" target="_blank" rel="noopener">Experiencias de aprendizaje y servicio en la formación de futuros servidores públicos: la experiencia de la Escuela de Gobierno y Gestión Pública de la Universidad de Chile</a></p>
+                <p class="meta">Paulina Vergara, <span class="self">Juan Pablo Araya</span> <span lang="es">y</span><span lang="en">and</span> Cristián Pliscoff. <span lang="es">En</span><span lang="en">In</span> A. Ríos (ed.), <i>La evaluación de políticas públicas en América Latina: métodos y propuestas docentes</i> (pp. 65–78). CLEAR-CIDE.</p>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">2013</span>
+              <div>
+                <p class="title">Partenariats public-privé, mouvements sociaux et discriminations : le cas de la reconstruction chilienne post-tremblement de terre et tsunami</p>
+                <p class="meta">Paulina Vergara <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <span lang="es">En</span><span lang="en">In</span> E. Guillalot <span lang="es">y</span><span lang="en">and</span> A. Prévert (eds.), <i>La discrimination : un objet indicible ?</i> (pp. 203–218). Grenoble: L'Harmattan.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="group">
+          <h3><span lang="es">Trabajos en evaluación y en curso</span><span lang="en">Papers under review and in progress</span></h3>
+          <ol class="pubs">
+            <li class="pub">
+              <span class="year">—</span>
+              <div>
+                <p class="title">Forming a Measuring Index for Institutional Public Service Motivation in State Civil Service Systems</p>
+                <p class="meta">Gene A. Brewer, Jeannette Taylor <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>.</p>
+                <span class="status"><span lang="es">En evaluación</span><span lang="en">Under review</span></span>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">—</span>
+              <div>
+                <p class="title">Revisiting Latin American Public Administration: Institutional Trajectories, Intellectual Traditions, and Global Asymmetries</p>
+                <p class="meta">Nicolás Didier <span lang="es">y</span><span lang="en">and</span> <span class="self">Juan Pablo Araya</span>. <i>International Review of Administrative Sciences</i>.</p>
+                <span class="status"><span lang="es">Resumen aceptado</span><span lang="en">Abstract accepted</span></span>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">—</span>
+              <div>
+                <p class="title">Assessing the Influence of Leadership Styles on Public Service Performance in Public Organizations</p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span>.</p>
+                <span class="status"><span lang="es">En evaluación</span><span lang="en">Under review</span></span>
+              </div>
+            </li>
+            <li class="pub">
+              <span class="year">—</span>
+              <div>
+                <p class="title">Building Disciplinary Identity in Public Administration Education: Lessons from Chile and the Global South</p>
+                <p class="meta"><span class="self">Juan Pablo Araya</span> <span lang="es">y</span><span lang="en">and</span> Nicolás Didier.</p>
+                <span class="status"><span lang="es">En evaluación</span><span lang="en">Under review</span></span>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEACHING ================= -->
+  <section class="block" id="docencia">
+    <div class="wrap">
+      <div class="label">
+        <h2><span lang="es">Docencia</span><span lang="en">Teaching</span></h2>
+        <p class="sub"><span lang="es">Cursos de pregrado y posgrado, y gestión académica</span><span lang="en">Undergraduate and graduate courses, and academic management</span></p>
+      </div>
+      <div class="body wide">
+
+        <div class="group">
+          <h3><span lang="es">Experiencia docente</span><span lang="en">Teaching experience</span></h3>
+          <div class="rows">
+            <div class="row">
+              <div class="inst">Universidad Diego Portales<small>2025 – <span lang="es">actual</span><span lang="en">present</span></small></div>
+              <div class="what">
+                <b><span lang="es">Profesor, Escuela de Administración Pública</span><span lang="en">Instructor, School of Public Administration</span></b>
+                <ul class="courses">
+                  <li><span lang="es">Taller de Políticas Públicas</span><span lang="en">Public Policy Workshop</span></li>
+                  <li><span lang="es">Liderazgo Público</span><span lang="en">Public Leadership</span></li>
+                  <li><span lang="es">Sistema Político</span><span lang="en">Political System</span></li>
+                  <li><span lang="es">Evaluación de Políticas Públicas</span><span lang="en">Policy Evaluation</span></li>
+                  <li><span lang="es">Fundamentos de Administración Pública</span><span lang="en">Foundations of Public Administration</span></li>
+                </ul>
+                <span class="award"><span lang="es">Premio Mejor Docente en Administración Pública 2025 · Facultad de Administración y Economía</span><span lang="en">Best Instructor in Public Administration Award 2025 · Faculty of Administration and Economics</span></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inst">University of Georgia<small>2021 – 2024</small></div>
+              <div class="what">
+                <b><span lang="es">Ayudante de cátedra, Master of Public Administration (MPA)</span><span lang="en">Teaching Assistant, Master of Public Administration (MPA)</span></b>
+                <ul class="courses">
+                  <li>Public Personnel Management</li>
+                  <li>Public Policy Implementation</li>
+                  <li>Comparative Public Administration</li>
+                  <li>Public Management</li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inst">Universidad Católica de Temuco<small>2024</small></div>
+              <div class="what">
+                <b><span lang="es">Profesor, Magíster en Gobierno y Asuntos Públicos</span><span lang="en">Lecturer, M.A. in Government and Public Affairs</span></b>
+                <ul class="courses">
+                  <li><span lang="es">Implementación de Políticas Públicas</span><span lang="en">Policy Implementation</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inst">Universidad de Los Lagos<small>2023 – 2024</small></div>
+              <div class="what">
+                <b><span lang="es">Profesor, Magíster en Gobierno y Políticas Públicas</span><span lang="en">Lecturer, M.A. in Government and Public Policy</span></b>
+                <ul class="courses">
+                  <li><span lang="es">Proceso de Políticas Públicas</span><span lang="en">Policy Process</span></li>
+                  <li><span lang="es">Evaluación de Políticas Públicas</span><span lang="en">Policy Evaluation</span></li>
+                  <li><span lang="es">Introducción a las Políticas Públicas</span><span lang="en">Introduction to Public Policy</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inst">Universidad de Santiago de Chile<small>USACH · 2020 – 2024</small></div>
+              <div class="what">
+                <b><span lang="es">Profesor, Diplomado en Innovación y Gestión Pública</span><span lang="en">Lecturer, Diploma in Innovation and Public Management</span></b>
+                <ul class="courses">
+                  <li><span lang="es">Liderazgo Público</span><span lang="en">Public Leadership</span></li>
+                  <li><span lang="es">Evaluación de Políticas Públicas</span><span lang="en">Policy Evaluation</span></li>
+                  <li><span lang="es">Innovación en el Sector Público</span><span lang="en">Public Sector Innovation</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inst">Universidad Autónoma de Chile<small>2020 – 2021</small></div>
+              <div class="what">
+                <b><span lang="es">Profesor, Magíster en Gobierno y Gestión Pública</span><span lang="en">Lecturer, M.A. in Government and Public Management</span></b>
+                <ul class="courses">
+                  <li><span lang="es">Dinámicas Políticas en el Estado</span><span lang="en">Political Dynamics in the State</span></li>
+                  <li><span lang="es">Gestión Financiera Local</span><span lang="en">Local Financial Management</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inst">Universidad de O'Higgins<small>2020 – 2022</small></div>
+              <div class="what">
+                <b><span lang="es">Profesor de pregrado, Escuela de Ciencias Sociales</span><span lang="en">Lecturer, undergraduate program, School of Social Sciences</span></b>
+                <ul class="courses">
+                  <li><span lang="es">Liderazgo Público</span><span lang="en">Public Leadership</span></li>
+                  <li><span lang="es">Teoría de la Administración Pública</span><span lang="en">Theory of Public Administration</span></li>
+                  <li><span lang="es">Proceso de Políticas Públicas</span><span lang="en">Policy Process</span></li>
+                  <li><span lang="es">Teoría Organizacional</span><span lang="en">Organizational Theory</span></li>
+                  <li><span lang="es">Introducción a la Administración Pública</span><span lang="en">Introduction to Public Administration</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inst">Universidad de Chile<small>2014 – 2022</small></div>
+              <div class="what">
+                <b><span lang="es">Profesor de pregrado, Escuela de Gobierno y Gestión Pública</span><span lang="en">Lecturer, undergraduate program, School of Government and Public Management</span></b>
+                <ul class="courses">
+                  <li><span lang="es">Teoría de la Administración Pública</span><span lang="en">Theory of Public Administration</span> <small>2014–18, 2020–22</small></li>
+                  <li><span lang="es">Política de la Administración Pública</span><span lang="en">Politics of Public Administration</span> <small>2016–18</small></li>
+                  <li><span lang="es">Introducción a la Administración Pública</span><span lang="en">Introduction to Public Administration</span> <small>2015–18</small></li>
+                  <li><span lang="es">Introducción al Estudio del Gobierno y la Administración Pública</span><span lang="en">Introduction to the Study of Government and Public Administration</span> <small>2014–18</small></li>
+                  <li><span lang="es">Evolución y Complejidad de la Administración Pública</span><span lang="en">Evolution and Complexity of Public Administration</span> <small>2015, 2021–22</small></li>
+                  <li><span lang="es">Epistemología de la Administración Pública</span><span lang="en">Epistemology of Public Administration</span> <small>2015</small></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3><span lang="es">Gestión académica</span><span lang="en">Academic management</span></h3>
+          <div class="rows">
+            <div class="row">
+              <div class="inst">Universidad de O'Higgins<small>2020 – 2023</small></div>
+              <div class="what"><b><span lang="es">Coordinador académico</span><span lang="en">Academic coordinator</span></b>, <span lang="es">pregrado en Administración Pública, Escuela de Ciencias Sociales.</span><span lang="en">undergraduate program in Public Administration, School of Social Sciences.</span></div>
+            </div>
+            <div class="row">
+              <div class="inst">Universidad de Chile<small>2010 – 2018</small></div>
+              <div class="what">
+                <b><span lang="es">Coordinador académico</span><span lang="en">Academic coordinator</span></b>, <span lang="es">pregrado en Administración Pública, Escuela de Gobierno y Gestión Pública.</span><span lang="en">undergraduate program in Public Administration, School of Government and Public Management.</span>
+                <p class="proj"><span lang="es">Asesor de la Comisión de Creación e Implementación del Programa de Estudios en Ciencia Política (2013–2018) y asistente de la Comisión de Modernización del Plan de Estudios de Administración Pública (2010–2012).</span><span lang="en">Advisor to the Commission for the Creation and Implementation of the Political Science Program (2013–2018) and assistant to the Commission for the Modernization of the Public Administration Curriculum (2010–2012).</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section class="block" id="investigacion">
+    <div class="wrap">
+      <div class="label">
+        <h2><span lang="es">Investigación</span><span lang="en">Research</span></h2>
+        <p class="sub"><span lang="es">Proyectos y experiencia de investigación</span><span lang="en">Projects and research experience</span></p>
+      </div>
+      <div class="body wide">
+        <div class="rows">
+          <div class="row">
+            <div class="inst">University of Georgia<small>2021 – 2025</small></div>
+            <div class="what">
+              <b><span lang="es">Asistente de investigación, Department of Public Administration and Policy</span><span lang="en">Research Graduate Assistant, Department of Public Administration and Policy</span></b>
+              <p class="proj"><i>Forming a Measurement Index for Institutional Public Service Motivation in State Civil Service Systems</i> (Gene A. Brewer) <span lang="es">y</span><span lang="en">and</span> <i>Comparing Fiscal Rules and Political Accountability in Subnational Governments in Colombia and Chile</i> (Felipe Lozano Rojas).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="inst">Universidad de Chile<small>2017 – 2018</small></div>
+            <div class="what">
+              <b><span lang="es">Investigador, proyecto de vinculación FONDECYT</span><span lang="en">Researcher, FONDECYT linking project</span></b>
+              <p class="proj"><i><span lang="es">Implementación de políticas públicas indígenas en Chile: evidencia y aportes desde la teoría de la burocracia representativa</span><span lang="en">Implementation of Indigenous Public Policies in Chile: Evidence and Contributions from the Theory of Representative Bureaucracy</span></i> (Verónica Figueroa Huencho).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="inst">Universidad de Santiago de Chile<small>2016 – 2019</small></div>
+            <div class="what">
+              <b><span lang="es">Investigador, FONDECYT Regular N.º 1160626</span><span lang="en">Researcher, FONDECYT Regular Project No. 1160626</span></b>
+              <p class="proj"><i><span lang="es">Agenda y políticas públicas en la vieja democracia, 1925–1973</span><span lang="en">Agenda and Public Policies in the Old Democracy, 1925–1973</span></i> (Mauricio Olavarría Gambi).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="inst">Universidad de Chile<small>2014 – 2015</small></div>
+            <div class="what">
+              <b><span lang="es">Investigador, Programa de Incentivo a la Excelencia Institucional</span><span lang="en">Researcher, Institutional Excellence Incentive Program</span></b>
+              <p class="proj"><i><span lang="es">Alianzas público-privadas y participación ciudadana en procesos de reconstrucción post-desastre</span><span lang="en">Public-Private Partnerships and Citizen Participation in Post-Disaster Reconstruction Processes</span></i> (Paulina Vergara Saavedra).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="inst">Universidad de Santiago de Chile<small>2012 – 2014</small></div>
+            <div class="what">
+              <b><span lang="es">Asistente de investigación, FONDECYT Regular N.º 1120546</span><span lang="en">Research Assistant, FONDECYT Regular Project No. 1120546</span></b>
+              <p class="proj"><i><span lang="es">Implementación de políticas públicas en Chile: análisis de los casos de modernización de la gestión pública, Plan AUGE-GES y Transantiago</span><span lang="en">Implementation of Public Policies in Chile: the Cases of Public Management Modernization, the AUGE-GES Plan and the Transantiago Program</span></i> (Mauricio Olavarría Gambi).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="inst">Universidad de Chile<small>2012 – 2014</small></div>
+            <div class="what">
+              <b><span lang="es">Asistente de investigación, Fondo Central de Investigación (U-Apoya)</span><span lang="en">Research Assistant, Central Fund for Research (U-Apoya)</span></b>
+              <p class="proj"><i><span lang="es">Análisis del proceso de construcción de alianzas público-privadas en Chile</span><span lang="en">Analysis of the Construction Process of Public-Private Partnerships in Chile</span></i> (Verónica Figueroa Huencho).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="inst">Universidad de Chile<small>2012 – 2013</small></div>
+            <div class="what">
+              <b><span lang="es">Asistente de investigación, FONDECYT Iniciación N.º 11110207</span><span lang="en">Research Assistant, FONDECYT Iniciación Project No. 11110207</span></b>
+              <p class="proj"><i><span lang="es">Las dos dimensiones de la ética pública: factores que explican la corrupción en Chile y marcos éticos para los funcionarios públicos chilenos</span><span lang="en">The Two Dimensions of Public Ethics: Factors Explaining Corruption in Chile and Ethical Frameworks for Chilean Public Officials</span></i> (Cristián Pliscoff Varas).</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="inst">Universidad de Chile<small>2008 – 2009</small></div>
+            <div class="what">
+              <b><span lang="es">Asistente de investigación, Fondo Central de Investigación (U-Inicia)</span><span lang="en">Research Assistant, Central Fund for Research (U-Inicia)</span></b>
+              <p class="proj"><i><span lang="es">Ética pública: ¿cómo y qué piensan los funcionarios públicos chilenos?</span><span lang="en">Public Ethics: How and What Are Chilean Public Officials Thinking?</span></i> (Cristián Pliscoff Varas).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TALKS ================= -->
+  <section class="block" id="ponencias">
+    <div class="wrap">
+      <div class="label">
+        <h2><span lang="es">Ponencias</span><span lang="en">Conference papers</span></h2>
+        <p class="sub"><span lang="es">Congresos y conferencias, más recientes primero</span><span lang="en">Conferences and presentations, newest first</span></p>
+      </div>
+      <div class="body wide">
+        <ol class="talks">
+          <li class="talk"><span class="year">2025</span><div><p class="t">Controlled or Independent Agencies? Assessing the Influence of Administrative Factors on Formal Agency Independence</p><p class="v">XVII Congreso de la Sociedad Chilena de Políticas Públicas · Santiago, Chile</p></div></li>
+          <li class="talk"><span class="year">2024</span><div><p class="t">Forming a Measuring Index for Institutional Public Service Motivation in State Civil Service Systems <span class="v" style="display:inline">(<span lang="es">con</span><span lang="en">with</span> G. A. Brewer <span lang="es">y</span><span lang="en">and</span> J. Taylor)</span></p><p class="v">Public Management Research Conference (PMRC) · Washington, D.C. — International Research Society for Public Management (IRSPM) · Tampere, Finland</p></div></li>
+          <li class="talk"><span class="year">2024</span><div><p class="t">Assessing the Influence of the Leadership Styles on Public Service Performance in Public Organizations</p><p class="v">Midwest Political Science Association (MPSA) · Chicago</p></div></li>
+          <li class="talk"><span class="year">2023</span><div><p class="t">Managerial and Political Determinants of the Structural Autonomy of Public Agencies <span class="v" style="display:inline">(<span lang="es">con</span><span lang="en">with</span> G. A. Brewer)</span></p><p class="v">IPSA World Congress of Political Science · Buenos Aires</p></div></li>
+          <li class="talk"><span class="year">2023</span><div><p class="t">Thirty Years of Administrative Reforms in Chile: Analyzing Anticipated Increases in Managerialism and Agency Autonomy under New Public Management <span class="v" style="display:inline">(<span lang="es">con</span><span lang="en">with</span> G. A. Brewer)</span></p><p class="v">IRSPM Conference · Budapest</p></div></li>
+          <li class="talk"><span class="year">2022</span><div><p class="t">Transportation Infrastructure Partnerships and Government Control of Corruption in Developing Countries: Impact on Level of Private Investment <span class="v" style="display:inline">(<span lang="es">con</span><span lang="en">with</span> G. Brewer <span lang="es">y</span><span lang="en">and</span> A. Karunaratne)</span></p><p class="v">26th International Public Management Network Conference · Arizona State University</p></div></li>
+          <li class="talk"><span class="year">2018</span><div><p class="t">Formulación de políticas públicas en Chile: estudios comparativos entre la vieja y la nueva democracia</p><p class="v">XIII Congreso Chileno de Ciencia Política · Santiago, Chile</p></div></li>
+          <li class="talk"><span class="year">2018</span><div><p class="t">Formulación de políticas públicas en la vieja democracia en Chile: análisis de las políticas de salud, previsión social y modernización de la gestión pública</p><p class="v">XIII Congreso Chileno de Ciencia Política · Santiago, Chile</p></div></li>
+          <li class="talk"><span class="year">2017</span><div><p class="t"><a href="http://www.ippapublicpolicy.org//file/paper/593eeeca78cc2.pdf" target="_blank" rel="noopener">Indigenous Public Policy Implementation: Changes and Interaction between Formal and Informal Institutions</a> <span class="v" style="display:inline">(<span lang="es">con</span><span lang="en">with</span> V. Figueroa)</span></p><p class="v">3rd International Conference on Public Policy (ICPP3) · Singapore</p></div></li>
+          <li class="talk"><span class="year">2016</span><div><p class="t">Influencia burocrática en el proceso de formulación de política pública: evidencias de la política de modernización de la gestión pública (1990–2014)</p><p class="v">XII Congreso Chileno de Ciencia Política · Pucón, Chile</p></div></li>
+          <li class="talk"><span class="year">2013</span><div><p class="t">La transparencia colaborativa como instrumento de una participación más inclusiva en la administración pública <span class="v" style="display:inline">(<span lang="es">con</span><span lang="en">with</span> R. Valenzuela)</span></p><p class="v">XVIII Congreso Internacional del CLAD · Montevideo, Uruguay</p></div></li>
+          <li class="talk"><span class="year">2013</span><div><p class="t">Public Private Partnership, Social Movements and Discrimination: The Case of Chilean Post-Earthquake and Tsunami 2010 <span class="v" style="display:inline">(<span lang="es">con</span><span lang="en">with</span> P. Vergara)</span></p><p class="v">1st International Conference on Public Policy · Grenoble, France</p></div></li>
+          <li class="talk"><span class="year">2012</span><div><p class="t">Alianzas público-privadas y participación ciudadana: desafíos para el fortalecimiento de la democracia</p><p class="v">Congreso Latinoamericano de Ciencia Política (ALACIP) · Quito, Ecuador</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CV & CONTACT ================= -->
+  <section class="block" id="cv">
+    <div class="wrap">
+      <div class="label">
+        <h2><span lang="es">CV y contacto</span><span lang="en">CV &amp; contact</span></h2>
+        <p class="sub"><span lang="es">Currículum, distinciones y afiliaciones</span><span lang="en">Curriculum vitae, honors and memberships</span></p>
+      </div>
+      <div class="body">
+        <div class="cta">
+          <a class="btn primary" href="cv/Araya_CV_EN.pdf" target="_blank" rel="noopener"><span lang="es">Descargar CV (inglés) · PDF</span><span lang="en">Download CV (English) · PDF</span></a>
+        </div>
+        <ul class="contact">
+          <li><span class="k">Email</span><span><a href="mailto:juanpablo.araya@udp.cl">juanpablo.araya@udp.cl</a></span></li>
+          <li><span class="k"><span lang="es">Teléfono</span><span lang="en">Phone</span></span><span><a href="tel:+56226760170">+56 2 2676 0170</a></span></li>
+          <li><span class="k"><span lang="es">Oficina</span><span lang="en">Office</span></span><span class="addr"><span lang="es">Departamento de Administración, Facultad de Administración y Economía, Universidad Diego Portales<br>Av. Santa Clara 797, Huechuraba, Santiago, Chile</span><span lang="en">Department of Administration, Faculty of Administration and Economics, Universidad Diego Portales<br>Av. Santa Clara 797, Huechuraba, Santiago, Chile</span></span></li>
+          <li><span class="k">Scholar</span><span><a href="https://scholar.google.com/citations?user=eDBbeDcAAAAJ" target="_blank" rel="noopener">Google Scholar</a></span></li>
+        </ul>
+
+        <ul class="honors">
+          <li><b><span lang="es">Premio Mejor Docente en Administración Pública 2025</span><span lang="en">Best Instructor in Public Administration Award 2025</span></b> · <span lang="es">Facultad de Administración y Economía, Universidad Diego Portales</span><span lang="en">Faculty of Administration and Economics, Universidad Diego Portales</span></li>
+          <li><b>Fulbright Scholarship</b> · <span lang="es">estudios doctorales en Estados Unidos, Departamento de Estado de EE. UU.</span><span lang="en">doctoral studies in the United States, U.S. Department of State</span></li>
+          <li><b>Zell Miller Scholarship for Public Leadership</b> · University of Georgia</li>
+          <li><b>Thomas P. and M. Jean Lauth Graduate Fellowship</b> · University of Georgia</li>
+          <li><b><span lang="es">Apoyo a viajes doctorales</span><span lang="en">Doctoral Travel Support</span></b> · University of Georgia · IPSA Buenos Aires <span lang="es">e</span><span lang="en">and</span> IRSPM Budapest (2023); MPSA Chicago <span lang="es">y</span><span lang="en">and</span> PMRC Washington (2024)</li>
+          <li><b><span lang="es">Tesis de magíster financiada por FONDECYT</span><span lang="en">Master's thesis funded by FONDECYT</span></b> · <span lang="es">proyecto «Implementación de políticas públicas en Chile», USACH y CONICYT (2014–2015)</span><span lang="en">project "Implementation of Public Policies in Chile", USACH and CONICYT (2014–2015)</span></li>
+          <li><b><span lang="es">Fondo OEA para la Educación en Valores Democráticos</span><span lang="en">OAS Fund for Education in Democratic Values</span></b> · <a href="http://www.uchile.cl/noticias/77271/escuela-de-gobierno-gana-importante-fondo-de-la-oea" target="_blank" rel="noopener"><span lang="es">Programa de Formación Ciudadana</span><span lang="en">Citizen Education Program</span></a> (2011–2012)</li>
+        </ul>
+
+        <p class="memb">
+          <b><span lang="es">Afiliaciones</span><span lang="en">Memberships</span></b>
+          Latin American Studies Association (LASA) · International Political Science Association (IPSA) · International Public Policy Association (IPPA) · <span lang="es">Asociación Chilena de Ciencia Política (ACCP)</span><span lang="en">Chilean Political Science Association (ACCP)</span>
+        </p>
+        <p class="memb">
+          <b><span lang="es">Evaluador</span><span lang="en">Ad-hoc reviewer</span></b>
+          International Review of Administrative Sciences · Revista de Gestión Pública
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Juan Pablo Araya Orellana · <span lang="es">Última actualización: septiembre de 2026</span><span lang="en">Last updated: September 2026</span></span>
+    <a href="https://www.udp.cl" target="_blank" rel="noopener" aria-label="Universidad Diego Portales">
+      <img class="light" src="udp-logo.png" alt="Universidad Diego Portales">
+      <img class="dark" src="udp-logo-dark.png" alt="">
+    </a>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var site = document.getElementById('site');
+  var buttons = site.querySelectorAll('.lang button');
+  function apply(lang){
+    site.setAttribute('data-lang', lang);
+    site.setAttribute('lang', lang);
+    buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-set') === lang)); });
+    try{ localStorage.setItem('jpa-lang', lang); }catch(e){}
+  }
+  var saved = null;
+  try{ saved = localStorage.getItem('jpa-lang'); }catch(e){}
+  if(!saved){
+    var nav = (navigator.language || 'es').toLowerCase();
+    saved = nav.indexOf('es') === 0 ? 'es' : 'en';
+  }
+  apply(saved);
+  buttons.forEach(function(b){ b.addEventListener('click', function(){ apply(b.getAttribute('data-set')); }); });
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
