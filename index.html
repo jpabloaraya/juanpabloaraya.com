@@ -103,9 +103,23 @@
   .affil img.dark{display:var(--logo-dark)}
   .affil .txt{font-family:var(--sans); font-size:12.5px; line-height:1.45; color:var(--ink-3); letter-spacing:.01em}
   .affil .txt a{color:var(--ink-2)}
-  .hero-links{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:22px; font-family:var(--sans); font-size:13.5px; font-weight:500}
+  .hero-links{display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:18px; font-family:var(--sans); font-size:13.5px; font-weight:500}
   .hero-links a{display:inline-flex; align-items:center; gap:6px; color:var(--ink)}
   .hero-links a::after{content:"↗"; color:var(--ink-3); font-size:12px}
+  .hero-links a[href^="mailto"]::after,.hero-links a[href^="#"]::after{content:none}
+
+  /* profile marks */
+  .profiles{display:flex; flex-wrap:wrap; gap:8px; margin-top:22px}
+  .chip{
+    display:inline-flex; align-items:center; gap:9px; padding:9px 14px 9px 11px;
+    border:1px solid var(--rule); border-radius:8px;
+    font-family:var(--sans); font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink-2); line-height:1;
+    transition:border-color .18s ease, color .18s ease, background-color .18s ease;
+  }
+  .chip:hover{text-decoration:none; color:var(--accent); border-color:var(--accent); background:var(--accent-soft)}
+  .ic{width:19px; height:19px; flex:none; display:block; color:inherit}
+  @media (prefers-reduced-motion: reduce){ .chip{transition:none} }
   .portrait{
     width:clamp(150px, 22vw, 240px); aspect-ratio:1; max-width:100%; overflow:hidden; margin:0;
     border-radius:6px; background:var(--paper-2); border:1px solid var(--rule);
@@ -200,6 +214,9 @@
   .contact li{display:grid; grid-template-columns:120px minmax(0,1fr); gap:12px; padding-block:12px; border-bottom:1px solid var(--rule); font-size:16.5px}
   .contact .k{font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); padding-top:4px}
   .contact li a{overflow-wrap:anywhere}
+  .contact .with-ic{display:flex; align-items:center; gap:10px}
+  .contact .with-ic .ic{width:17px; height:17px; color:var(--ink-3)}
+  .contact .with-ic .num{font-variant-numeric:tabular-nums; letter-spacing:.01em}
   .contact .addr{color:var(--ink-2)}
   @media (max-width:420px){ .contact li{grid-template-columns:1fr; gap:4px} }
   .honors{list-style:none; margin:28px 0 0; padding:0; display:grid; gap:10px; max-width:64ch}
@@ -220,6 +237,36 @@
 </head>
 <body>
 <div id="site" data-lang="es">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="ic-orcid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="12" cy="12" r="9"></circle>
+      <circle cx="12" cy="12" r="4.6"></circle>
+      <circle cx="12" cy="12" r="1.35" fill="currentColor" stroke="none"></circle>
+    </symbol>
+    <symbol id="ic-scholar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2.6 9.1 12 4.6l9.4 4.5-9.4 4.5z"></path>
+      <path d="M6.6 11v4.3c0 1.6 2.4 2.7 5.4 2.7s5.4-1.1 5.4-2.7V11"></path>
+      <path d="M21.4 9.6v4.2"></path>
+    </symbol>
+    <symbol id="ic-anid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="12" cy="5.2" r="2.3"></circle>
+      <circle cx="5.2" cy="18" r="2.3"></circle>
+      <circle cx="18.8" cy="18" r="2.3"></circle>
+      <path d="M10.9 7.3 6.3 15.9"></path>
+      <path d="M13.1 7.3l4.6 8.6"></path>
+      <path d="M7.5 18h9"></path>
+    </symbol>
+    <symbol id="ic-github" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+      <circle cx="7" cy="5.4" r="2.3"></circle>
+      <circle cx="7" cy="18.6" r="2.3"></circle>
+      <circle cx="17.2" cy="9.1" r="2.3"></circle>
+      <path d="M7 7.7v8.6"></path>
+      <path d="M14.9 9.6c-5.3.4-7.9 1.3-7.9 3.9"></path>
+    </symbol>
+  </defs>
+</svg>
 
 <header class="top">
   <div class="wrap">
@@ -269,8 +316,13 @@
             <span lang="en">School of Public Administration · <a href="https://www.udp.cl" target="_blank" rel="noopener">Faculty of Administration and Economics</a><br>Santiago, Chile</span>
           </p>
         </div>
+        <div class="profiles">
+          <a class="chip" href="https://orcid.org/0000-0002-4797-1838" target="_blank" rel="noopener" title="ORCID 0000-0002-4797-1838"><svg class="ic" aria-hidden="true"><use href="#ic-orcid"></use></svg>ORCID</a>
+          <a class="chip" href="https://scholar.google.com/citations?user=eDBbeDcAAAAJ" target="_blank" rel="noopener" title="Google Scholar"><svg class="ic" aria-hidden="true"><use href="#ic-scholar"></use></svg>Scholar</a>
+          <a class="chip" href="https://investigadores.anid.cl/es/people/52222-Juan_Araya" target="_blank" rel="noopener" title="Portal del Investigador ANID"><svg class="ic" aria-hidden="true"><use href="#ic-anid"></use></svg>ANID</a>
+          <a class="chip" href="https://github.com/jpabloaraya" target="_blank" rel="noopener" title="GitHub"><svg class="ic" aria-hidden="true"><use href="#ic-github"></use></svg>GitHub</a>
+        </div>
         <div class="hero-links">
-          <a href="https://scholar.google.com/citations?user=eDBbeDcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
           <a href="mailto:juanpablo.araya@udp.cl">juanpablo.araya@udp.cl</a>
           <a href="#cv"><span lang="es">Descargar CV</span><span lang="en">Download CV</span></a>
         </div>
@@ -770,7 +822,10 @@
           <li><span class="k">Email</span><span><a href="mailto:juanpablo.araya@udp.cl">juanpablo.araya@udp.cl</a></span></li>
           <li><span class="k"><span lang="es">Teléfono</span><span lang="en">Phone</span></span><span><a href="tel:+56226760170">+56 2 2676 0170</a></span></li>
           <li><span class="k"><span lang="es">Oficina</span><span lang="en">Office</span></span><span class="addr"><span lang="es">Departamento de Administración, Facultad de Administración y Economía, Universidad Diego Portales<br>Av. Santa Clara 797, Huechuraba, Santiago, Chile</span><span lang="en">Department of Administration, Faculty of Administration and Economics, Universidad Diego Portales<br>Av. Santa Clara 797, Huechuraba, Santiago, Chile</span></span></li>
-          <li><span class="k">Scholar</span><span><a href="https://scholar.google.com/citations?user=eDBbeDcAAAAJ" target="_blank" rel="noopener">Google Scholar</a></span></li>
+          <li><span class="k">ORCID</span><span class="with-ic"><svg class="ic" aria-hidden="true"><use href="#ic-orcid"></use></svg><a class="num" href="https://orcid.org/0000-0002-4797-1838" target="_blank" rel="noopener">0000-0002-4797-1838</a></span></li>
+          <li><span class="k">Scholar</span><span class="with-ic"><svg class="ic" aria-hidden="true"><use href="#ic-scholar"></use></svg><a href="https://scholar.google.com/citations?user=eDBbeDcAAAAJ" target="_blank" rel="noopener">Google Scholar</a></span></li>
+          <li><span class="k">ANID</span><span class="with-ic"><svg class="ic" aria-hidden="true"><use href="#ic-anid"></use></svg><a href="https://investigadores.anid.cl/es/people/52222-Juan_Araya" target="_blank" rel="noopener"><span lang="es">Portal del Investigador</span><span lang="en">Researcher Portal</span></a></span></li>
+          <li><span class="k">GitHub</span><span class="with-ic"><svg class="ic" aria-hidden="true"><use href="#ic-github"></use></svg><a href="https://github.com/jpabloaraya" target="_blank" rel="noopener">jpabloaraya</a></span></li>
         </ul>
 
         <ul class="honors">
